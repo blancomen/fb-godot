@@ -33,6 +33,10 @@ __meta__ = {
 listenerNodePath = "/root/root/unit"
 name = "left_analog"
 
+[node name="inventory" parent="ui_root/canvas_layer/inventory_control"]
+
+unit_path = NodePath("../../../../unit")
+
 [node name="background" type="Sprite" parent="."]
 
 transform/pos = Vector2( 48.7843, 35.2793 )

@@ -2,13 +2,16 @@ extends Node2D
 
 export var items = {}
 export var mouse_on = false
+export(NodePath) var unit_path
+
+var unit
 
 var max_items = 15
 var rows = 3
 var columns = 5
 var count_items = 0
 
-var hud_offset = Vector2(15, 15)
+var hud_offset = Vector2(14, 14)
 var item_size = Vector2(32,32)
 var border_size = 2
 
@@ -18,6 +21,11 @@ func _ready():
 	set_fixed_process(true)
 	for i in range(0, max_items):
 		items[i] = null
+		
+	unit = get_node(unit_path)
+
+func get_item(i):
+	return items[i]
 
 func add_item(item):
 	var free_cell = get_free_cell()
@@ -37,10 +45,10 @@ func get_cell_position(cell):
 	return i_to_xy(cell) * item_size + hud_offset + i_to_xy(cell)*border_size
 
 func i_to_xy(i):
-	return Vector2(i % columns, (i / columns)%rows)
+	return Vector2(i % columns, (i / columns)%(rows))
 
 func xy_to_i(pos):
-	return pos.x * columns + pos.y
+	return pos.y * columns + pos.x
 
 func _on_area_mouse_enter():
 	mouse_on = true

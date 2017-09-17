@@ -18,6 +18,7 @@ func _ready():
 	var item_axe = preload("res://items/axe.tscn")
 	var item_sword = preload("res://items/sword.tscn")
 	var item_black_rec = preload("res://items/black_rec.tscn")
+	var item_spit = preload("res://items/spit.tscn")
 	
 	inventory.add_item(item_axe.instance())
 	inventory.add_item(item_axe.instance())
@@ -25,6 +26,11 @@ func _ready():
 	inventory.add_item(item_axe.instance())
 	inventory.add_item(item_axe.instance())
 	inventory.add_item(item_sword.instance())
+	
+	var spit = item_spit.instance()
+	inventory.add_item(spit)
+	
+	get_node("unit").set_right_hand(spit)
 	
 	get_tree().get_root().connect("size_changed", self, "update_ui")
 	update_ui()

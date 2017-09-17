@@ -183,6 +183,11 @@ func _fixed_process(delta):
 				motion = n
 			move(motion)
 	
+func set_right_hand(item):
+	var item_sprite = item.get_node(\"sprite\")
+	var hand_sprite = get_node(\"sprite/right_hand/sprite\")
+	hand_sprite.set_texture(item_sprite.get_texture())
+	hand_sprite.set_region_rect(item_sprite.get_region_rect())
 	
 func get_speed():
 	return speed

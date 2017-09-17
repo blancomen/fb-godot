@@ -11,6 +11,7 @@ items = {
 
 }
 mouse_on = false
+unit_path = null
 
 [node name="items" type="Node2D" parent="."]
 
@@ -32,7 +33,7 @@ margin/top = 0.0
 margin/right = 195.0
 margin/bottom = 127.0
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="item_select" type="Node2D" parent="."]
 
 script/script = ExtResource( 3 )
 
