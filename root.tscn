@@ -1,0 +1,234 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://root.gd" type="Script" id=1]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=3]
+[ext_resource path="res://sprites/tileset_1.png" type="Texture" id=4]
+[ext_resource path="res://tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scarecrow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://stone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://unit.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 11.717 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="root" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ui_root" parent="." instance=ExtResource( 2 )]
+
+[node name="left_analog" parent="ui_root/canvas_layer/left_control"]
+
+listenerNodePath = "/root/root/unit"
+name = "left_analog"
+
+[node name="background" type="Sprite" parent="."]
+
+transform/pos = Vector2( 48.7843, 35.2793 )
+z/relative = false
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 2048, 2048 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Y-Zdepth" type="Node2D" parent="."]
+
+transform/pos = Vector2( -31.7331, -3.59244 )
+
+[node name="obstacle" type="StaticBody2D" parent="Y-Zdepth"]
+
+transform/pos = Vector2( 59.3688, 43.5005 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1.06568, 0, 0, 0.770284, -0.6011, 0.212284 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.51
+
+[node name="sprite" type="Sprite" parent="Y-Zdepth/obstacle"]
+
+transform/pos = Vector2( 0.418209, 3.31965 )
+texture = ExtResource( 4 )
+offset = Vector2( -0.632839, -3.31965 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Zdepth/obstacle"]
+
+transform/pos = Vector2( -0.6011, 0.212284 )
+transform/scale = Vector2( 1.06568, 0.770284 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="obstacle1" type="StaticBody2D" parent="Y-Zdepth"]
+
+editor/display_folded = true
+transform/pos = Vector2( 199.313, 22.0366 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1.08591, 0, 0, 0.908087, -0.337845, -1.42547 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.51
+
+[node name="sprite" type="Sprite" parent="Y-Zdepth/obstacle1"]
+
+transform/pos = Vector2( 0.849243, 6.01883 )
+texture = ExtResource( 4 )
+offset = Vector2( -1.06387, -6.01883 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Zdepth/obstacle1"]
+
+transform/pos = Vector2( -0.337845, -1.42547 )
+transform/scale = Vector2( 1.08591, 0.908087 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="obstacle2" type="StaticBody2D" parent="Y-Zdepth"]
+
+transform/pos = Vector2( 203.519, 94.5081 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1.08591, 0, 0, 0.908087, -0.337845, -1.42547 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.51
+
+[node name="sprite" type="Sprite" parent="Y-Zdepth/obstacle2"]
+
+transform/pos = Vector2( 0.849243, 6.01883 )
+texture = ExtResource( 4 )
+offset = Vector2( -1.06387, -6.01883 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Zdepth/obstacle2"]
+
+transform/pos = Vector2( -0.337845, -1.42547 )
+transform/scale = Vector2( 1.08591, 0.908087 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="obstacle3" type="StaticBody2D" parent="Y-Zdepth"]
+
+editor/display_folded = true
+transform/pos = Vector2( 281.311, 52.8017 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1.08591, 0, 0, 0.908087, -0.337845, -1.42547 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.51
+
+[node name="sprite" type="Sprite" parent="Y-Zdepth/obstacle3"]
+
+transform/pos = Vector2( 0.849243, 6.01883 )
+texture = ExtResource( 4 )
+offset = Vector2( -1.06387, -6.01883 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y-Zdepth/obstacle3"]
+
+transform/pos = Vector2( -0.337845, -1.42547 )
+transform/scale = Vector2( 1.08591, 0.908087 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="tree1" parent="Y-Zdepth" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 68.2583, -6.68141 )
+
+[node name="tree" parent="Y-Zdepth" instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 182.888, -26.0813 )
+
+[node name="scarecrow" parent="Y-Zdepth" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 76.7932, 127.599 )
+
+[node name="stone1" parent="Y-Zdepth" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 23.233, 95.3594 )
+
+[node name="stone" parent="Y-Zdepth" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( -25.8815, 118.595 )
+
+[node name="stone2" parent="Y-Zdepth" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 342.104, 179.656 )
+
+[node name="unit" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 117.583, 79.2254 )
+collision/mask = 3
+
+[node name="Camera2D" type="Camera2D" parent="unit"]
+
+transform/pos = Vector2( 4.4325, -21.0305 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.7, 0.7 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_pressed"]
+
+[connection signal="released" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_released"]
+
+[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_pressed"]
+
+[connection signal="released" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_released"]
+
+
+[editable path="ui_root"]

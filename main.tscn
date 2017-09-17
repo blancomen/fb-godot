@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://unit.tscn" type="PackedScene" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 31.9709, -0.356476, 31.84, 7.78845, -32.4244, 8.18762, -32.4244, -8.7766, 32.0396, -7.9783 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 29.0042, 407.384, 29.0042, 228.991, 205.181, 230.099, 231.837, 325.324 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 556.428, 406.276, 29.0042, 407.384, 231.837, 325.324 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 556.428, 406.276, 231.837, 325.324, 412.569, 246.278 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 182.388, 164.3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 611.98, 174.851 )
+transform/rot = 90.0
+transform/scale = Vector2( 3, 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+transform/pos = Vector2( -0.132401, -28.467 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 31.9709, -0.356476, 31.84, 7.78845, -32.4244, 8.18762, -32.4244, -8.7766, 32.0396, -7.9783 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -13.5052, 10.7248 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 3 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, -13.5052, 10.7248 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 4 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, -13.5052, 10.7248 )
+shapes/2/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+
+transform/pos = Vector2( 295.279, 317.835 )
+transform/scale = Vector2( 3, 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( -13.5052, 10.7248 )
+build_mode = 0
+polygon = Vector2Array( 29.0042, 407.384, 29.0042, 228.991, 205.181, 230.099, 231.837, 325.324, 412.569, 246.278, 556.428, 406.276 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+
