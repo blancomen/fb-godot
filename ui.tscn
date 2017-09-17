@@ -37,8 +37,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 764.0
 margin/top = -1.0
-margin/right = 1017.0
-margin/bottom = 149.0
+margin/right = 964.0
+margin/bottom = 136.0
 
 [node name="inventory" parent="canvas_layer/inventory_control" instance=ExtResource( 2 )]
 

@@ -1,6 +1,7 @@
 extends Node2D
 
 var select_item = -1
+var mouse_in_area = false
 
 func _ready():
 	set_process(true)
@@ -17,23 +18,20 @@ func _input(event):
 	
 func _process(delta):
 	var mouse_p = get_viewport().get_mouse_pos()
-	var hud_offset = get_parent().hud_offset
-	var item_size = get_parent().item_size
-	var border_size = get_parent().border_size
+	var scale = get_parent().get_scale()
+	var hud_offset = get_parent().hud_offset * scale
+	var item_size = get_parent().item_size * scale
 	var rows = get_parent().rows
 	var cols = get_parent().columns
 	
+	
 	var parent_pos = get_parent().get_parent().get_pos()
-	var hud_p = Vector2(parent_pos.x + hud_offset.x, parent_pos.y + hud_offset.y)
-	var hud_size = Vector2(
-		item_size.x * cols + (cols - 1) * border_size, 
-		item_size.y * rows + (rows - 1) * border_size
-	)
+	var hud_p = Vector2(parent_pos.x + hud_offset.x + 2, parent_pos.y + hud_offset.y + 2)
 
-	if mouse_p.x > hud_p.x && mouse_p.y > hud_p.y && mouse_p.x < hud_p.x + hud_size.x && mouse_p.y < hud_p.y + hud_size.y:
+	if mouse_in_area:
 		var xy = Vector2(
-			ceil((mouse_p.x - hud_p.x) / item_size.x) - 1,
-			ceil((mouse_p.y - hud_p.y) / item_size.y) - 1
+			ceil((mouse_p.x - hud_p.x) / (item_size.x)) - 1,
+			ceil((mouse_p.y - hud_p.y) / (item_size.y)) - 1
 		)
 		
 		if xy.x < 0:
@@ -56,5 +54,12 @@ func _process(delta):
 	
 func _draw():
 	if select_item != -1:
+		var scale = get_parent().get_scale()
 		var pos = get_parent().get_cell_position(int(select_item))
-		draw_rect(Rect2(pos, get_parent().item_size), Color(255, 0, 0))
+		draw_rect(Rect2(pos + Vector2(2, 2) * scale, get_parent().item_size - Vector2(4, 4) * scale), Color(255, 0, 0, 0.5))
+
+func _on_items_area_mouse_enter():
+	mouse_in_area = true
+
+func _on_items_area_mouse_exit():
+	mouse_in_area = false

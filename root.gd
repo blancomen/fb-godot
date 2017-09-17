@@ -19,6 +19,7 @@ func _ready():
 	var item_sword = preload("res://items/sword.tscn")
 	var item_black_rec = preload("res://items/black_rec.tscn")
 	var item_spit = preload("res://items/spit.tscn")
+	var item_cross = preload("res://items/cross.tscn")
 	
 	inventory.add_item(item_axe.instance())
 	inventory.add_item(item_axe.instance())
@@ -29,6 +30,7 @@ func _ready():
 	
 	var spit = item_spit.instance()
 	inventory.add_item(spit)
+	inventory.add_item(item_cross.instance())
 	
 	get_node("unit").set_right_hand(spit)
 	
@@ -45,7 +47,8 @@ func update_ui():
 	buttons_control.set_pos(viewport_rect - buttons_control.get_size())
 	
 	var inventory_control = get_node("ui_root/canvas_layer/inventory_control")
-	inventory_control.set_pos(Vector2(viewport_rect.width - inventory_control.get_size().width * get_node("ui_root/canvas_layer/inventory_control").get_scale().x, 0))
+	var scale = get_node("ui_root/canvas_layer/inventory_control/inventory").get_scale()
+	inventory_control.set_pos(Vector2(viewport_rect.width - inventory_control.get_size().width * scale.x, 0))
 	
 	# todo move
 	# todo buttons

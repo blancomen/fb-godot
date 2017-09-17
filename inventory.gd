@@ -6,14 +6,14 @@ export(NodePath) var unit_path
 
 var unit
 
+var is_open = true
+
 var max_items = 15
 var rows = 3
 var columns = 5
-var count_items = 0
 
-var hud_offset = Vector2(14, 14)
-var item_size = Vector2(32,32)
-var border_size = 2
+var hud_offset = Vector2(13, 14)
+var item_size = Vector2(34,34)
 
 var last_viewport_size = Vector2()
 
@@ -42,7 +42,7 @@ func get_free_cell():
 	return null
 
 func get_cell_position(cell):
-	return i_to_xy(cell) * item_size + hud_offset + i_to_xy(cell)*border_size
+	return i_to_xy(cell) * item_size + hud_offset
 
 func i_to_xy(i):
 	return Vector2(i % columns, (i / columns)%(rows))
