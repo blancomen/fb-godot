@@ -2,7 +2,7 @@ extends Node2D
 
 const INACTIVE_IDX = -1;
 export var isDynamicallyShowing = false
-export var listenerNodePath = ""
+export(NodePath) var listenerNodePath = ""
 export var name = ""
 
 var ball

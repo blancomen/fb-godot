@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
-[ext_resource path="res://ui.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/grass.png" type="Texture" id=3]
+[ext_resource path="res://sprites/grass.png" type="Texture" id=2]
+[ext_resource path="res://ui.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/tileset_1.png" type="Texture" id=4]
-[ext_resource path="res://tree.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scarecrow.tscn" type="PackedScene" id=6]
-[ext_resource path="res://stone.tscn" type="PackedScene" id=7]
-[ext_resource path="res://unit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/static/tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/static/scarecrow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/static/stone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/unit/unit.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,34 +26,36 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ui_root" parent="." instance=ExtResource( 2 )]
-
-[node name="left_analog" parent="ui_root/canvas_layer/left_control"]
-
-listenerNodePath = "/root/root/unit"
-name = "left_analog"
-
-[node name="inventory" parent="ui_root/canvas_layer/inventory_control"]
-
-unit_path = NodePath("../../../../unit")
-
 [node name="background" type="Sprite" parent="."]
 
 transform/pos = Vector2( 48.7843, 35.2793 )
 z/relative = false
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 0, 0, 2048, 2048 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="ui_root" parent="." instance=ExtResource( 3 )]
+
+[node name="left_analog" parent="ui_root/canvas_layer/left_control"]
+
+listenerNodePath = NodePath("../../../../unit")
+name = "left_analog"
+
+[node name="inventory" parent="ui_root/canvas_layer/inventory_control"]
+
+unit_path = NodePath("../../../../unit")
+
 [node name="Y-Zdepth" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -31.7331, -3.59244 )
 
 [node name="obstacle" type="StaticBody2D" parent="Y-Zdepth"]
 
+editor/display_folded = true
 transform/pos = Vector2( 59.3688, 43.5005 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -115,6 +117,7 @@ _update_shape_index = 0
 
 [node name="obstacle2" type="StaticBody2D" parent="Y-Zdepth"]
 
+editor/display_folded = true
 transform/pos = Vector2( 203.519, 94.5081 )
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
@@ -209,7 +212,7 @@ transform/pos = Vector2( 4.4325, -21.0305 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.7, 0.7 )
+zoom = Vector2( 0.6, 0.6 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
@@ -225,14 +228,6 @@ drag_margin/bottom = 0.2
 __meta__ = {
 "_edit_lock_": true
 }
-
-[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_pressed"]
-
-[connection signal="released" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_released"]
-
-[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_pressed"]
-
-[connection signal="released" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_released"]
 
 
 [editable path="ui_root"]
