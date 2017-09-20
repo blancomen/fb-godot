@@ -229,5 +229,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_pressed"]
+
+[connection signal="released" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_released"]
+
+[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_pressed"]
+
+[connection signal="released" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_released"]
+
 
 [editable path="ui_root"]
