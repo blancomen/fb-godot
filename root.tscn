@@ -233,6 +233,10 @@ __meta__ = {
 
 [connection signal="released" from="ui_root/canvas_layer/buttons_control/jump" to="unit" method="_on_jump_released"]
 
+[connection signal="pressed" from="ui_root/canvas_layer/buttons_control/speed" to="unit" method="_on_speed_pressed"]
+
+[connection signal="released" from="ui_root/canvas_layer/buttons_control/speed" to="unit" method="_on_speed_released"]
+
 [connection signal="pressed" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_pressed"]
 
 [connection signal="released" from="ui_root/canvas_layer/buttons_control/attack" to="unit" method="_on_attack_released"]

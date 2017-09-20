@@ -20,6 +20,9 @@ var direction = Vector2(0,0)
 var last_direction = Vector2(0, 0)
 var speed = 85
 
+# Speed up percent
+var speed_up_percent = 1
+
 var travel_direction = Vector2()
 
 var animationInstance
@@ -37,6 +40,7 @@ var is_left_pressed = false
 var is_right_pressed = false
 var is_middle_pressed = false
 var is_jump_pressed = false
+var is_speed_up_pressed = false
 
 var direction_sprite = \"down\"
 var prev_direction_sprite = direction_sprite
@@ -191,6 +195,8 @@ func set_right_hand(item):
 	hand_sprite.set_region_rect(item_sprite.get_region_rect())
 	
 func get_speed():
+	if is_speed_up_pressed:
+		return speed + speed * speed_up_percent
 	return speed
 
 func play_if_not_playing(animation):
@@ -210,6 +216,12 @@ func _on_attack_pressed():
 
 func _on_attack_released():
 	is_right_pressed = false
+
+func _on_speed_pressed():
+	is_speed_up_pressed = true
+
+func _on_speed_released():
+	is_speed_up_pressed = false
 "
 
 [sub_resource type="Animation" id=3]
