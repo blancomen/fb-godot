@@ -46,6 +46,7 @@ func _process(delta):
 				if hover_item != -1:
 					# Set moved item
 					moved_item = get_parent().get_item(hover_item)
+					get_parent().unit.get_node("items_radius").open()
 		else:
 			# move item to cursor
 			moved_item.set_global_pos(mouse_p - moved_item_offset)
@@ -54,12 +55,17 @@ func _process(delta):
 	else:
 		if moved_item:
 			# Drop item
+			var item_radius = get_parent().unit.get_node("items_radius")
+			
 			if hover_item != -1:
 				get_parent().move_item(moved_item.inventory_index, hover_item)
 			else:
-				get_parent().unit.set_right_hand(moved_item)
-			moved_item.set_pos(get_parent().get_cell_position(moved_item.inventory_index))
+				get_parent().move_item(moved_item.inventory_index, moved_item.inventory_index)
+				if item_radius.mouse_in_radius():
+					get_parent().unit.set_right_hand(moved_item)
+					
 			moved_item = null
+			get_parent().unit.get_node("items_radius").close()
 	
 func get_hover_item(mouse_p):
 	var scale = get_parent().get_scale()
