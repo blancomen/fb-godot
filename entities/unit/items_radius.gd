@@ -10,6 +10,7 @@ var color_in = Color(0.6, 0.9, 0.36, 0.7)
 
 func _ready():
 	set_process(true)
+	set_fixed_process(true)
 
 func open():
 	is_open = true
@@ -22,6 +23,7 @@ func close():
 func mouse_in_radius():
 	var mouse_pos = get_global_mouse_pos()
 	return get_parent().get_pos().distance_to(mouse_pos) <= radius
+
 
 func _process(delta):
 	if is_open && radius_current < radius:

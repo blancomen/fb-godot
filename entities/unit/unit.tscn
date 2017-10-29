@@ -47,6 +47,9 @@ var prev_direction_sprite = direction_sprite
 
 export var mouse_on_hud = false
 
+func _asdasdA():
+	pass
+
 func _ready():
 	set_fixed_process(true)
 	set_process_input(true)
@@ -654,12 +657,12 @@ texture = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( -0.400766, -1.04638 )
+transform/pos = Vector2( 0.288826, -0.742962 )
 texture = ExtResource( 3 )
 offset = Vector2( -1.02537, -12.5865 )
 vframes = 4
 hframes = 3
-frame = 10
+frame = 7
 
 [node name="right_hand" type="Node2D" parent="sprite"]
 
@@ -668,8 +671,9 @@ transform/scale = Vector2( 0.725626, 0.765553 )
 
 [node name="sprite" type="Sprite" parent="sprite/right_hand"]
 
-transform/pos = Vector2( -12.9084, -5.22274 )
-z/z = -1
+transform/pos = Vector2( -17.4246, -3.54405 )
+transform/scale = Vector2( 0.849078, 1 )
+z/z = 1
 texture = ExtResource( 4 )
 region = true
 region_rect = Rect2( 96, 64, 32, 32 )

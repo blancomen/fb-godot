@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://ui/move_sensor/move_tracer.gd" type="Script" id=1]
+[ext_resource path="res://sprites/black_rec.png" type="Texture" id=2]
+[ext_resource path="res://sprites/ui/jump.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ui/jump_pressed.png" type="Texture" id=4]
+[ext_resource path="res://sprites/ui/attack.png" type="Texture" id=5]
+[ext_resource path="res://sprites/ui/attack_pressed.png" type="Texture" id=6]
+[ext_resource path="res://sprites/ui/big_circle.png" type="Texture" id=7]
+[ext_resource path="res://sprites/ui/big_circle_2.png" type="Texture" id=8]
+[ext_resource path="res://learned_tracks_matrix.gd" type="Script" id=9]
+
+[node name="sensor" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 295.225
+margin/top = 263.509
+margin/right = 303.225
+margin/bottom = 277.509
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label2" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 59.0
+margin/top = 6.0
+margin/right = 67.0
+margin/bottom = 20.0
+text = "Current track"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label3" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 297.0
+margin/top = 5.0
+margin/right = 379.0
+margin/bottom = 19.0
+text = "Track matrix"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label1" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 295.0
+margin/top = 280.0
+margin/right = 303.0
+margin/bottom = 294.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="draw_area" type="Container" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -1.0
+margin/top = 0.0
+margin/right = 1279.0
+margin/bottom = 731.0
+script/script = ExtResource( 1 )
+
+[node name="track" type="Sprite" parent="."]
+
+transform/pos = Vector2( 169.468, 137.509 )
+transform/scale = Vector2( 7, 7 )
+z/z = -100
+texture = ExtResource( 2 )
+
+[node name="tracks_matrix" type="Sprite" parent="."]
+
+transform/pos = Vector2( 407.225, 137.509 )
+transform/scale = Vector2( 7, 7 )
+z/z = -100
+texture = ExtResource( 2 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 548.887, 130.613 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.828438, 0.828438 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton1" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 556.993, 251.112 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.853769, 0.853769 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 694.784, 183.568 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.853769, 0.853769 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="learned_tracks_matrix" type="Node2D" parent="."]
+
+transform/pos = Vector2( 43.2286, 298.277 )
+script/script = ExtResource( 9 )
+
+[connection signal="mouse_enter" from="draw_area" to="draw_area" method="_on_draw_area_mouse_enter"]
+
+[connection signal="mouse_exit" from="draw_area" to="draw_area" method="_on_draw_area_mouse_exit"]
+
+[connection signal="pressed" from="TouchScreenButton" to="draw_area" method="_on_TouchScreenButton_pressed"]
+
+[connection signal="released" from="TouchScreenButton" to="draw_area" method="_on_TouchScreenButton_released"]
+
+[connection signal="pressed" from="TouchScreenButton1" to="draw_area" method="_on_TouchScreenButton1_pressed"]
+
+[connection signal="pressed" from="TouchScreenButton2" to="draw_area" method="_on_TouchScreenButton2_pressed"]
+
+

@@ -32,6 +32,7 @@ func _ready():
 	inventory.add_item(spit)
 	inventory.add_item(item_cross.instance())
 	
+	
 	get_node("unit").set_right_hand(spit)
 	
 	get_tree().get_root().connect("size_changed", self, "update_ui")
